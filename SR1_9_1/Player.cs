@@ -8,16 +8,22 @@ namespace SR1_9_1
 {
     internal class Player
     {
-        Item useItem;
+        private List<Item>inventory = new List<Item>();
 
-        public Player(Item item) 
+        public void AddItem(Item item)
         {
-            useItem = item;
+            inventory.Add(item);
         }
 
         public void UseItem()
         {
-            useItem.Use();
+            if (inventory.Count > 0)
+            {
+                inventory[0].Use();
+                inventory[1].Use();
+                inventory[2].Use();
+                inventory.RemoveAt(0);
+            }
         }
     }
 }
